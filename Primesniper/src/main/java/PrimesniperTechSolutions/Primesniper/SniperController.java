@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RestController
+@Controller
 @RequestMapping(path="api/v1/Sniper")
 @AllArgsConstructor
 public class SniperController {
