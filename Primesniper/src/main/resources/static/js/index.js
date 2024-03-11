@@ -14,6 +14,11 @@ function closeInsertModal() {
     document.getElementById("insertModal").style.display = "none";
 }
 
+function closeDetailsModal() {
+    document.getElementById("detailsModal").style.display = "none";
+}
+
+
 function openUpdateModal(data) {
 
     document.getElementById("updateModal").style.display = "block";
@@ -27,7 +32,7 @@ function openUpdateModal(data) {
     console.log("Edit Item Gender:", genderVal);
     console.log("Edit Item Birthday:", birthdayVal);
 
-    document.getElementById("itemIdUpdate").value = itemId;
+    document.getElementById("sniperIdUpdate").value = itemId;
     document.getElementById("genderUpdate").value = genderVal;
     document.getElementById("birthdayUpdate").value = birthdayVal;
 
@@ -81,7 +86,7 @@ $(document).ready(function() {
                                             
                                             <button class="editBtn" data-id="${id}" data-gender="${gender}" data-birthday="${birthday}" onclick="openUpdateModal(this)">Edit Item</button>
                                             <button class="deleteBtn" data-id="${id}" onclick="deleteItem(this)">Delete Item</button>
-                                            <button id="detailsBtn" data-id="${id}" onclick="getItemDetails(this)">Item Details</button>
+                                            <button id="detailsBtn" data-id="${id}" data-email="${email}" data-msisdn="${msisdn}" data-username="${username}" data-birthday="${birthday}" data-gender="${gender}" onclick="getItemDetails(this)">Item Details</button>
                                         </div>
                                     </div>
                                 `;
@@ -153,8 +158,8 @@ $(document).ready(function() {
                 <td>${email}</td>
                 <td colspan="2">
                     <button class="btn btn-primary" data-id="${id}" data-gender="${gender}" data-birthday="${birthday}" onclick="openUpdateModal(this)">Edit Item</button>
-                    <button class="btn btn-danger" data-id="${id}" onclick="deleteItem(this)">Delete Item</button>
-                    <button class="btn btn-info" data-id="${id}" onclick="getItemDetails(this)">Item Details</button>
+                    <button class="btn btn-danger" data-id="${id}" data-username="${username}" onclick="deleteItem(this)">Delete Item</button>
+                    <button id="detailsBtn" data-id="${id}" data-email="${email}" data-msisdn="${msisdn}" data-username="${username}" data-birthday="${birthday}" data-gender="${gender}" onclick="getItemDetails(this)">Item Details</button>
                 </td>
             </tr>
         </tbody>
@@ -266,3 +271,58 @@ function updateItem() {
     });
 }
 
+
+function getItemDetails(detailsData) {
+
+
+
+    document.getElementById("detailsModal").style.display = "block";
+
+    const itemId = detailsData?.getAttribute('data-id');
+    const genderVal = detailsData?.getAttribute('data-gender');
+    const birthdayVal = detailsData?.getAttribute('data-birthday');
+    const usernameVal = detailsData?.getAttribute('data-username');
+    const msisdnVal = detailsData?.getAttribute('data-msisdn');
+    const emailVal = detailsData?.getAttribute('data-email');
+
+    console.log("Edit Sniper Details:", itemId, genderVal, birthdayVal, usernameVal, msisdnVal, emailVal);
+
+    document.getElementById("sniperIdDetails").textContent = itemId;
+    document.getElementById("genderDetails").textContent = genderVal;
+    document.getElementById("birthdayDetails").textContent = birthdayVal;
+    document.getElementById("usernameDetails").textContent = usernameVal;
+    document.getElementById("msisdnDetails").textContent = msisdnVal;
+    document.getElementById("emailDetails").textContent = emailVal;
+
+
+}
+
+
+
+function deleteItem(deleteData){
+
+    console.log("Delete Not Yet successfull");
+    const itemId = deleteData.getAttribute('data-id');
+    const userName = deleteData.getAttribute('data-username');
+
+    // Your logic to delete the item using the itemId
+    console.log("Delete Item ID:", itemId, "and username", userName);
+
+
+    $.ajax({
+        url: `api/v1/Sniper/delete/${itemId}`,
+        type: "DELETE",
+        contentType: "application/json",
+        success: function (response) {
+            console.log("Delete successful", response);
+
+            alert("Delete successful");
+            // Additional success handling if needed
+        },
+        error: function (error) {
+            console.log("Error updating item: ", error);
+            // Additional error handling if needed
+            console.log("ggg error", insertData);
+
+        }
+    });}

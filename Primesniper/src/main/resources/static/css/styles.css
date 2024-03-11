@@ -116,7 +116,7 @@ form{
     grid-template-columns: 1fr 1fr;
 }
 
-#updateModal,#insertModal {
+#updateModal,#insertModal, #detailsModal {
     position: fixed;
     top: 50%;
     left: 50%;
