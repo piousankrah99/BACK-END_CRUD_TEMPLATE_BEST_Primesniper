@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RestController
+@CrossOrigin(origins = "http://localhost:8082")
+@Controller
 @RequestMapping(path="api/v1/Sniper")
 @AllArgsConstructor
 public class SniperController {
@@ -22,12 +23,14 @@ public class SniperController {
     }
 
     @GetMapping("/getAll")
+    @ResponseBody   // This annotation tells Spring to directly return the data as the response body
     public List <Sniper> getAllSnipers(){
 
         return sniperService.getAllSnipers();
     }
 
     @GetMapping("/getById/{id}")
+    @ResponseBody   // This annotation tells Spring to directly return the data as the response body
     public Optional <Sniper> getById(@PathVariable("id") Long id){
         return  sniperService.getBySniperId(id);
     }
