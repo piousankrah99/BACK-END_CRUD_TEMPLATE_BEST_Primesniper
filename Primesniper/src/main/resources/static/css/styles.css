@@ -1,0 +1,169 @@
+body {
+    padding: 0;
+    margin: 0 !important;
+    height: auto;
+    width: auto;
+    max-height: 0;
+    max-width: 100%;
+    background-color: #020234;
+}
+
+. {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    width: auto;
+    max-height: 0;
+    max-width: 100%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #020234;
+    color: whitesmoke;
+    width: 100%;
+}
+
+li{
+    text-decoration: none;
+    position: relative;
+    list-style-type: none;
+    margin: 0 0.5rem;
+}
+
+.leftNav{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.rightNav{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.row{
+    display: flex;
+}
+
+.sideBar{
+    position: relative;
+    gap: 1rem;
+    height: 100vh;
+    width: fit-content;
+    background-color: #020234;
+    color: #fff;
+    transition: 0.3s;
+    display: block;
+    align-items: center;
+    align-content: center;
+}
+
+.toggleButton{
+    color: whitesmoke;
+    background-color: #020234;
+    position: relative;
+}
+
+.sideBar.active {
+    width: 0;
+}
+
+.sideBar.active .sideBarText {
+    display: none;
+}
+
+
+.mainCards{
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.card{
+    color: black;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    height: fit-content;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+form{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#updateModal,#insertModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    padding: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1;
+
+}
+
+.modal-content {
+    width: 300px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #0d6efd;
+}
+
+
+.modal-overlay {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.pageData{
+    display: flex;
+    gap:3rem;
+}
+
+table{
+    background-color: aliceblue;
+}
+
+@media (max-width: 768px) {
+    .sideBar {
+        width: 0;
+    }
+
+}
